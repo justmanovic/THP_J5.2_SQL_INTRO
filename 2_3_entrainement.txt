@@ -1,0 +1,56 @@
+Récupérer tous les albums écrits par AC/DC
+
+SELECT * FROM albums
+JOIN artists ON artists.artistid = albums.artistid
+WHERE artists.name = 'AC/DC';
+
+
+Récupérer tous les titres des albums de AC/DC
+
+SELECT albums.title FROM albums
+JOIN artists ON artists.artistid = albums.artistid
+WHERE artists.name = 'AC/DC';
+
+
+Récupérer la liste des titres de l'album "Let There Be Rock"
+
+SELECT * FROM tracks
+JOIN albums ON albums.albumid = tracks.albumid
+WHERE albums.title = "Let There Be Rock";
+
+Afficher le prix de cet album ainsi que sa durée totale
+
+SELECT SUM(UnitPrice) FROM tracks
+JOIN albums ON albums.albumid = tracks.albumid
+WHERE albums.title = "Let There Be Rock";
+
+SELECT SUM(milliseconds) FROM tracks
+JOIN albums ON albums.albumid = tracks.albumid
+WHERE albums.title = "Let There Be Rock";
+
+pour afficher en secondes: 
+SELECT (SELECT SUM(milliseconds) FROM tracks
+JOIN albums ON albums.albumid = tracks.albumid
+WHERE albums.title = "Let There Be Rock")/1000;
+ 
+
+Afficher le coût de l'intégralité de la discographie de "Deep Purple"
+
+1) récupération de tous les albums de deeppurprle
+SELECT * FROM albums
+JOIN artists ON artists.artistid = albums.artistid
+WHERE artists.name = 'Deep Purple';
+
+2) let's go
+
+SELECT SUM(UnitPrice) FROM tracks
+JOIN artists ON artists.artistid = albums.artistid
+JOIN albums ON albums.albumid = tracks.albumid
+WHERE artists.name = 'Deep Purple';
+
+
+ARTISTE FAVORI
+
+INSERT INTO artists (name) VALUES ('Michael Jackson');
+INSERT INTO albums (title, artistid) VALUES ('Thriller', (SELECT artistid FROM artists WHERE artists.name = 'Michael Jackson'));
+INSERT INTO tracks (name, albumid, mediatypeid, genreid, composer, milliseconds, bytes, unitprice) VALUES  ('Billie Jean', (SELECT albumid FROM albums WHERE albums.title = 'Thriller'),999,999,XXX,9999999,0100101,300);

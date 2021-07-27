@@ -1,0 +1,76 @@
+-- 2.2.1 MOOCademy
+
+CREATE TABLE `cours` (
+    `id` INTEGER PRIMARY KEY AUTOINCREMENT, 
+    `nom_cours` TEXT,
+);
+
+CREATE TABLE `lesson` (
+    `id` INTEGER PRIMARY KEY AUTOINCREMENT, 
+    `id_cours` INTEGER, 
+    `titre_lesson` TEXT,
+    `description_lesson` TEXT
+);
+
+-- 2.2.2 The Hacking Pinterest
+
+CREATE TABLE `pin` (
+    `id` INTEGER PRIMARY KEY AUTOINCREMENT, 
+    `url` TEXT
+);
+
+CREATE TABLE `pin_user` (
+    `id_pin` INTEGER, 
+    `id_user` INTEGER
+);
+
+CREATE TABLE `comments` (
+`id` INTEGER PRIMARY KEY AUTOINCREMENT, 
+    `id_user` INTEGER
+    `id_pin` INTEGER, 
+    `comment_body` TEXT
+);
+
+CREATE TABLE `user` (
+    `id` INTEGER PRIMARY KEY AUTOINCREMENT, 
+    `name` TEXT,
+); 
+
+--  2.2.3 The Hacking News
+
+CREATE TABLE `user` (
+    `id` INTEGER PRIMARY KEY AUTOINCREMENT, 
+    `name` TEXT,
+); 
+
+CREATE TABLE `links` (
+    `id` INTEGER PRIMARY KEY AUTOINCREMENT, 
+    `id_user` INTEGER
+);
+
+CREATE TABLE `comment_links` (
+    `id` INTEGER PRIMARY KEY AUTOINCREMENT, 
+    `comment_body` TEXT
+    `id_user` INTEGER
+    `id_link` INTEGER
+);
+
+CREATE TABLE `comment_comment_links` (
+    `id` INTEGER PRIMARY KEY AUTOINCREMENT, 
+    `comment_comment_body` TEXT
+    `id_user` INTEGER
+    `id_original_comment` INTEGER
+);
+
+-- 2.2.4 The hacking class
+
+CREATE TABLE `student` (
+    `id` INTEGER PRIMARY KEY AUTOINCREMENT, 
+    `name` TEXT,
+    `cours_id` INTEGER
+);
+
+CREATE TABLE `cours` (
+    `id` INTEGER PRIMARY KEY AUTOINCREMENT, 
+    `title` TEXT
+);
